@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardViewWeb"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    app:cardCornerRadius="16dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       >
+        <ImageView
+            android:id="@+id/imgContent"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/toolbarimage"
+            android:layout_above="@id/tvContent"
+            />
+        <TextView
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:id="@+id/tvContent"
+            android:textColor="#303F9F"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Take a trip to Paris at this new French bistro by Scott Pickett" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

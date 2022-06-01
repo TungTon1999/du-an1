@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">DuAn1</string>
+    <string name="Hello">Hello Newbie</string>
+    <string name="name">Nickname</string>
+    <string name="born">Ngày sinh</string>
+    <string name="email">Email khác</string>
+
+    <string name="restaurant">RESTAURANT</string>
+    <string name="_223_vo_van_tan">223 Vo Van Tan</string>
+    <string name="open_9_00_11_00">Open : 9:00-11:00</string>
+    <string name="_223_vo_van_tan_district_3_ho_chi_minh_city_viet_nam">223 Vo Van Tan, District 3 , Ho Chi Minh City, Viet Nam</string>
+    <string name="hotline_1900_0000">Hotline : 1900 0000</string>
+    <string name="contact">Contact</string>
+    <string name="m_n_ch_nh_n_i_b_t">Món chính nổi bật</string>
+    <string name="edvt">edvt</string>
+    <string name="time">Time</string>
+    <string name="date_picker">Date Picker</string>
+    <string name="rooms">Room</string>
+    <string name="_1111111">1111111</string>
+    <string name="gi_tie_n">Giá tiền:</string>
+    <string name="vnd">VNĐ</string>
+    <string name="thanh_to_n_hoa">Thanh Toán</string>
+    <string name="headers">header</string>
+    <string name="todos">TODO</string>
+    <string name="gi_ha_ng">Giỏ hàng</string>
+
+
+    <string name="lorem">
+        Information You Provide to Us.
+       * We may collect Personal Data from you, such as your first and last name, gender, e-mail and mailing addresses, and password when you create an account to use the Services (“Account”). Only representatives of a Venue may create an Account (each such individual, a “Registered User”).
+       * If you access the Services on your mobile device, we may collect your phone number and the unique device id number (Registered Users only).
+       * When connecting to our Services via a service provider that uniquely identifies your mobile device, we may receive this identification and use it to offer extended services and/or functionality (Registered Users only).
+       * If you provide us feedback or contact us via e-mail, we will collect your name and e-mail address, as well as any other content included in the e-mail, in order to send you a reply.
+       * If you participate in a survey conducted via the Services, we may collect additional profile information.
+       * We may also collect Personal Data at other points in our Site or Services that state that Personal Data is being collected.
+        Use of Your Data.
+       +Personal Data. In general, Personal Data you submit to us is used either to deliver the Services or respond to requests that you make. We use your Personal Data in the following ways:
+        //
+        * Facilitate the creation of and secure your Account (Registered Users only).
+         * Identify you as a user of the Services.
+        * Provide improved administration of our Site and Services.
+        * Provide the Services you request, including by communication this information to the applicable Venue.
+        * Improve the quality of experience when you interact with our Site and Services.
+        * Send Guests email and SMS text confirmations and other communications, like reminders, for each of your reservations. Venues may also use the Platform to send such messages directly to Guests.
+        * Send you administrative e-mail notifications, such as security or support and maintenance advisories (Registered Users only).
+        * Respond to your inquiries related to employment opportunities or other requests.
+    </string>
+
+
+</resources>
+
+

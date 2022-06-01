@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_store"
+    android:background="#BDBBBB"
+    tools:context=".activities.GiftActivity">
+
+    <Toolbar
+        android:id="@+id/toolbarStore"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:title="Store" />
+
+    <TextView
+        android:id="@+id/tv15461"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarStore"
+        android:padding="10dp"
+        android:text="Our Restaurant"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewCaoThang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv15461"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        app:cardCornerRadius="8sp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/img16"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="8sp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_16" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/tv16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img16"
+                android:text="RESTAURANT"
+                android:textColor="#8F8C8C"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_margin="5dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv16"
+                android:layout_toRightOf="@id/img16"
+                android:text="86 Cao Thang"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewVoVanTan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardViewCaoThang"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        app:cardCornerRadius="8sp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/img17"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="8sp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_17" />
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/tv17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img17"
+                android:text="RESTAURANT"
+                android:textColor="#8F8C8C"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv17"
+                android:layout_toRightOf="@id/img17"
+                android:text="223 Vo Van Tan"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationGift"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/main_menu" />
+</RelativeLayout>
