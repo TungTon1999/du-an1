@@ -40,7 +40,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.duan1.Adapter.BottomSheetAdapter;
 import com.example.duan1.Adapter.MenuAdapter;
 import com.example.duan1.Adapter.onClickListenerAdapter;
@@ -72,7 +71,7 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class TableActivity extends AppCompatActivity implements View.OnClickListener {
+public class TableActivity extends AppCompatActivity  {
 
     private static final int NOTIFICATION_ID = 1;
     EditText edtDiscount, edtInfomation;
@@ -81,7 +80,6 @@ public class TableActivity extends AppCompatActivity implements View.OnClickList
     String currentLocation1, infomationForDelvery, currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     Integer count = 0;
-    CircleImageView civPizza, civBeef, civSpa, civSalad, civDrink, civDesert;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     LinearLayoutManager layoutManager, layoutManager2;
     LinearLayout linnearGoToOrder, linearLayoutOrder, lnDelete;
@@ -112,37 +110,11 @@ public class TableActivity extends AppCompatActivity implements View.OnClickList
         initToolbar();
         initBottomNavigtionTable();
         LoadSetting();
-        civPizza.setOnClickListener(this);
-        civBeef.setOnClickListener(this);
-        civSpa.setOnClickListener(this);
-        civDrink.setOnClickListener(this);
-        civSalad.setOnClickListener(this);
-        civDesert.setOnClickListener(this);
+
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                Location location = task.getResult();
-                if (location != null) {
 
-                    try {
-                        Geocoder geocoder = new Geocoder(TableActivity.this, Locale.getDefault());
-                        List<Address> addresses = geocoder.getFromLocation(
-                                location.getLatitude(), location.getLongitude()
-                                , 1);
-                        currentLocation = addresses.get(0).getAddressLine(0);
-                        tvTenDuong.setText(addresses.get(0).getAdminArea());
-                        tvDiaChi.setText(currentLocation);
-                        tvAddress.setText(currentLocation);
-                        Log.d("===", currentLocation + "");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
         linnearGoToOrder.setOnClickListener(new View.OnClickListener() {
             CharSequence s = DateFormat.getDateInstance().format(date.getTime());
 
@@ -235,26 +207,7 @@ public class TableActivity extends AppCompatActivity implements View.OnClickList
                 .build();
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, notification);
-        SharedPreferences sharedPreferences = getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
-        String phonenumber = sharedPreferences.getString("phone","012345789");
-        Map<String, Object> noti = new HashMap<>();
-        noti.put("NOTIFICATION", notificaitons);
-        noti.put("PHONE",phonenumber );
 
-        db.collection("NOTIFICATION")
-                .add(noti)
-                .addOnSuccessListener(new OnSuccessListener <DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(">>>>>>>>>>>>>>>", "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("<<<<<<<<<<<<<<<<<<<<<<", "Error adding document", e);
-                    }
-                });
     }
 
     private TextView.OnEditorActionListener editaction = new TextView.OnEditorActionListener() {
@@ -363,12 +316,7 @@ public class TableActivity extends AppCompatActivity implements View.OnClickList
         tvAddress = findViewById(R.id.tvAddress);
         tvCountItem = findViewById(R.id.tvCountItem);
         toolbar = findViewById(R.id.toolbarMenu);
-        civBeef = findViewById(R.id.imgBeef);
-        civPizza = findViewById(R.id.imgPizza);
-        civDesert = findViewById(R.id.imgDesert);
-        civDrink = findViewById(R.id.imgDrink);
-        civSalad = findViewById(R.id.imgSalad);
-        civSpa = findViewById(R.id.imgSpaghetti);
+
         recyclerViewMenu = findViewById(R.id.rcvMenu);
         recycleViewOrder = findViewById(R.id.recycleViewOrder);
         bottomNavigationView = findViewById(R.id.bottomNavigationTable);
@@ -399,15 +347,12 @@ public class TableActivity extends AppCompatActivity implements View.OnClickList
                         break;
                     case R.id.menu_menu:
                         startActivity(new Intent(TableActivity.this, MenuActivity.class));
-                        Animatoo.animateFade(TableActivity.this);  //fire the zoom animation
                         break;
                     case R.id.menu_home:
                         startActivity(new Intent(TableActivity.this, MainActivity.class));
-                        Animatoo.animateFade(TableActivity.this);  //fire the zoom animation
                         break;
                     case R.id.menu_gift:
                         startActivity(new Intent(TableActivity.this, GiftActivity.class));
-                        Animatoo.animateFade(TableActivity.this);  //fire the zoom animation
                         break;
 
                 }
@@ -420,40 +365,9 @@ public class TableActivity extends AppCompatActivity implements View.OnClickList
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(TableActivity.this, MainActivity.class));
-        Animatoo.animateFade(TableActivity.this);  //fire the zoom animation
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.imgBeef:
-                scrolltoItem(0);
-                break;
-            case R.id.imgPizza:
-                scrolltoItem(7);
-                break;
-            case R.id.imgDesert:
-                scrolltoItem(2);
-                break;
-            case R.id.imgDrink:
-                scrolltoItem(3);
-                break;
-            case R.id.imgSpaghetti:
-                scrolltoItem(13);
-                break;
-            case R.id.imgSalad:
-                scrolltoItem(11);
-                break;
-        }
-    }
 
-    private void scrolltoItem(int i) {
-        if (layoutManager == null) {
-            return;
-        }
-        ;
-        layoutManager.scrollToPositionWithOffset(i, 0);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -10,7 +10,6 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.duan1.R;
 
 import java.net.URL;
@@ -53,6 +52,5 @@ public class WebViewActivity extends AppCompatActivity {
         super.onBackPressed();
         Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
-        Animatoo.animateFade(WebViewActivity.this);
     }
 }

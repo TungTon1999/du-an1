@@ -38,16 +38,16 @@
             android:gravity="center"
             android:text="Welcome to"
             />
+
         <TextView
             android:id="@+id/tvOurRestaurant"
-            android:layout_below="@+id/tvWelcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:layout_below="@+id/tvWelcome"
             android:gravity="center"
-            android:text="OUR RESTAURANT"
-            />
+            android:text="Our Home's Interiors"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:gravity="center"

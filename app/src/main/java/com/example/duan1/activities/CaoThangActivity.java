@@ -314,7 +314,6 @@ public class CaoThangActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(CaoThangActivity.this, GiftActivity.class));
-        Animatoo.animateSlideDown(CaoThangActivity.this);
     }
     public void ShowDialogAdd(View view){
         dialogAdd.show();

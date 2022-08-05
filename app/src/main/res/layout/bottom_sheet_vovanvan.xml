@@ -44,8 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/viewPager2VVT"
                 android:paddingStart="10dp"
-                android:text="@string/restaurant"
-                />
+                android:text="Showroom" />
 
             <TextView
                 android:id="@+id/id15174"

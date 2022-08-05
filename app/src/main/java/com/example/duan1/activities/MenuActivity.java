@@ -21,7 +21,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.duan1.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -51,7 +50,6 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MenuActivity.this,BillActivity.class);
                 startActivity(i);
-                Animatoo.animateSlideRight(MenuActivity.this);
             }
         });
         linearLayoutLogout.setOnClickListener(new View.OnClickListener() {
@@ -166,18 +164,15 @@ public class MenuActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.menu_store:
                         startActivity(new Intent(MenuActivity.this, TableActivity.class));
-                        Animatoo.animateFade(MenuActivity.this);  //fire the zoom animation
                         break;
                     case R.id.menu_menu:
 
                         break;
                     case R.id.menu_home:
                         startActivity(new Intent(MenuActivity.this, MainActivity.class));
-                        Animatoo.animateFade(MenuActivity.this);  //fire the zoom animation
                         break;
                     case R.id.menu_gift:
                         startActivity(new Intent(MenuActivity.this, GiftActivity.class));
-                        Animatoo.animateFade(MenuActivity.this);  //fire the zoom animation
                         break;
 
                 }
@@ -190,7 +185,6 @@ public class MenuActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(MenuActivity.this, MainActivity.class));
-        Animatoo.animateFade(MenuActivity.this);  //fire the zoom animation
     }
 
     public void LoadSetting(){

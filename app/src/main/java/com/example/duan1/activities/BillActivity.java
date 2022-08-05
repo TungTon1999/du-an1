@@ -44,53 +44,7 @@ public class BillActivity extends AppCompatActivity {
     }
 
     public void ReadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
-        if (sharedPreferences.getString("phone", "0912181340").equalsIgnoreCase("+84789867336")) {
             db.collection("BILL")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                listhd = new ArrayList<>();
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    String data = "";
-                                    int count = 1;
-                                    Log.d("====", document.getId() + " => " + document.getData());
-                                    Object a = document.get("FOOD");
-                                    String c = a.toString().replace("[", "");
-                                    String d = c.toString().replace("{", "");
-                                    String e = d.toString().replace("]", "");
-                                    String f = e.toString().replace("}", "");
-                                    String[] token = f.split(",");
-                                    for (String b : token) {
-                                        data += b.trim() + "                    ";
-                                        if (count % 2 == 0){
-                                            data += "\n";
-                                        }
-                                        count ++;
-
-                                    }
-
-                                    String address = document.getString("ADDRESS");
-                                    String price = document.getString("PRICE");
-                                    String date = document.getString("DATE");
-                                    String discountcode = document.getString("DISCOUNTCODE");
-                                    HoaDon hoaDon = new HoaDon(data.trim().toUpperCase(), price, address, date, discountcode);
-                                    listhd.add(hoaDon);
-                                }
-                                layoutManager = new LinearLayoutManager(BillActivity.this);
-                                rcvBill.setLayoutManager(layoutManager);
-                                adapter = new BillAdapter(listhd, BillActivity.this);
-                                rcvBill.setAdapter(adapter);
-                            } else {
-                                Log.w("===", "Error getting documents.", task.getException());
-                            }
-                        }
-                    });
-        } else {
-            db.collection("BILL")
-                    .whereEqualTo("PHONE", sharedPreferences.getString("phone", "0912181340"))
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
@@ -112,7 +66,8 @@ public class BillActivity extends AppCompatActivity {
                                     String price = document.getString("PRICE");
                                     String date = document.getString("DATE");
                                     String discountcode = document.getString("DISCOUNTCODE");
-                                    HoaDon hoaDon = new HoaDon(data, price, address, date, discountcode);
+                                    String phone = document.getString("PHONE");
+                                    HoaDon hoaDon = new HoaDon(data, price, address, date, discountcode,phone);
                                     listhd.add(hoaDon);
                                 }
                                 layoutManager = new LinearLayoutManager(BillActivity.this);
@@ -126,5 +81,5 @@ public class BillActivity extends AppCompatActivity {
                     });
         }
 
-    }
+
 }

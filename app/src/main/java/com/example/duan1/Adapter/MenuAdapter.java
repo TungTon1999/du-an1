@@ -152,7 +152,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuAdapterVie
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Log.d("TAG", "DocumentSnapshot successfully updated!");
-                                dialog.dismiss();
+                                dialog.dismiss();0
                                 notifyDataSetChanged();
                             }
                         })

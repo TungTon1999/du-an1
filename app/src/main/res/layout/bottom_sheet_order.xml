@@ -171,7 +171,7 @@
                     android:layout_margin="5dp"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Your Food"
+                    android:text="Your selected Item"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 

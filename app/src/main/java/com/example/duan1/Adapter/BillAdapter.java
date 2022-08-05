@@ -1,6 +1,8 @@
 package com.example.duan1.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,11 +27,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
     List<HoaDon> list;
@@ -62,28 +67,34 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
         holder.tv_price.setText(hoaDon.getPrice());
         holder.tv_date.setText("Date : " + hoaDon.getDate());
         holder.tv_discount.setText("Discount code : " + hoaDon.getDiscountcode());
-        holder.rating_bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                holder.rating_bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-                    @Override
-                    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+        holder.tv_phonenumberr.setText(hoaDon.getPhone());
+        holder.btnRating.setOnClickListener(new View.OnClickListener() {
+           @SuppressLint("ResourceAsColor")
+           @Override
+           public void onClick(View view) {
+                holder.tvStatus.setText("Is Delivery");
+                holder.tvStatus.setTextColor(R.color.teal_200);
+               SharedPreferences sharedPreferences = context.getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
+               Map<String, Object> noti = new HashMap<>();
+               noti.put("NOTIFICATION", "Your order is confirmed \" + \"\\n\" +\"Please wait for Us");
+               noti.put("PHONE",hoaDon.getPhone() );
 
-                        holder.btnRating.setVisibility(View.VISIBLE);
-                        holder.btnRating.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Toast.makeText(context, "Your rating is send " + "\n" + "Thank for your Advise", Toast.LENGTH_SHORT).show();
-                                holder.btnRating.setVisibility(View.GONE);
-                                holder.rating_bar.setVisibility(View.GONE);
-                            }
-                        });
-
-
-                    }
-                });
-            }
-        });
+               db.collection("NOTIFICATION")
+                       .add(noti)
+                       .addOnSuccessListener(new OnSuccessListener <DocumentReference>() {
+                           @Override
+                           public void onSuccess(DocumentReference documentReference) {
+                               Log.d(">>>>>>>>>>>>>>>", "DocumentSnapshot added with ID: " + documentReference.getId());
+                           }
+                       })
+                       .addOnFailureListener(new OnFailureListener() {
+                           @Override
+                           public void onFailure(@NonNull Exception e) {
+                               Log.w("<<<<<<<<<<<<<<<<<<<<<<", "Error adding document", e);
+                           }
+                       });
+           }
+       });
     }
 
     @Override
@@ -92,8 +103,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_foodname, tv_date, tv_discount, tv_address, tv_price;
-        RatingBar rating_bar;
+        TextView tv_foodname, tv_date, tv_discount, tv_address, tv_price,tvStatus,tv_phonenumberr;
         Button btnRating;
 
         public ViewHolder(@NonNull View itemView) {
@@ -103,8 +113,9 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
             tv_discount = itemView.findViewById(R.id.tv_discount);
             tv_address = itemView.findViewById(R.id.tv_address);
             tv_price = itemView.findViewById(R.id.tv_price);
-            rating_bar = itemView.findViewById(R.id.rating_bar);
+            tvStatus = itemView.findViewById(R.id.tvStatus);
             btnRating = itemView.findViewById(R.id.btnRating);
+            tv_phonenumberr = itemView.findViewById(R.id.tv_phonenumberr);
         }
     }
 }

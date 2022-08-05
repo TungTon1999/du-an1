@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.duan1.Adapter.BottomSheetAdapter;
 import com.example.duan1.Adapter.MenuAdapter;
 import com.example.duan1.Adapter.NoticationAdapter;
@@ -85,7 +84,6 @@ public class NotificationActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(NotificationActivity.this,MainActivity.class);
         startActivity(i);
-        Animatoo.animateFade(NotificationActivity.this);
         super.onBackPressed();
     }
 

@@ -4,7 +4,24 @@ import java.util.Date;
 import java.util.List;
 
 public class HoaDon {
-    String foodname,price,address,date,discountcode;
+    String foodname,price,address,date,discountcode,phone;
+
+    public HoaDon(String foodname, String price, String address, String date, String discountcode, String phone) {
+        this.foodname = foodname;
+        this.price = price;
+        this.address = address;
+        this.date = date;
+        this.discountcode = discountcode;
+        this.phone = phone;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public HoaDon() {
     }
@@ -25,13 +42,7 @@ public class HoaDon {
         this.date = date;
     }
 
-    public HoaDon(String foodname, String price, String address, String date,String discountcode) {
-        this.foodname = foodname;
-        this.price = price;
-        this.address = address;
-        this.date = date;
-        this.discountcode = discountcode;
-    }
+
 
     public HoaDon(String foodname, String price, String address) {
         this.foodname = foodname;

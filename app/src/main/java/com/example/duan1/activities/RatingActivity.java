@@ -21,7 +21,6 @@ public class RatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
         tvFeeling=findViewById(R.id.tvFeeling);
-        ratingBar=findViewById(R.id.rating_bar);
         btRate=findViewById(R.id.btRate);
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
