@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/cvBillItem"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="16dp"
     android:layout_margin="5dp"
@@ -29,7 +30,7 @@
                 android:id="@+id/tv_foodname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Ten Mon An"
+                android:text="Ten hang"
                 android:textColor="@color/black"
                 android:layout_weight="1"
                 />

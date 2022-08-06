@@ -27,7 +27,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.duan1.Adapter.NewsAdapter;
 import com.example.duan1.R;
 import com.example.duan1.model.News;
@@ -78,17 +77,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.menu_store:
                         startActivity(new Intent(MainActivity.this, TableActivity.class));
-                        Animatoo.animateFade(MainActivity.this);  //fire the zoom animation
                         break;
                     case R.id.menu_menu:
                         startActivity(new Intent(MainActivity.this, MenuActivity.class));
-                        Animatoo.animateFade(MainActivity.this);  //fire the zoom animation
                         break;
                     case R.id.menu_home:
                         break;
                     case R.id.menu_gift:
                         startActivity(new Intent(MainActivity.this, GiftActivity.class));
-                        Animatoo.animateFade(MainActivity.this);  //fire the zoom animation
                         break;
                 }
                 return true;
@@ -173,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.icon_thongbao_menu){
             Intent i = new Intent(MainActivity.this,NotificationActivity.class);
             startActivity(i);
-            Animatoo.animateFade(MainActivity.this);
         }
         return super.onOptionsItemSelected(item);
     }

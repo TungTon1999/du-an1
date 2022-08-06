@@ -37,20 +37,18 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         background = findViewById(R.id.img_Background);
         lottieAnimationView = findViewById(R.id.lav);
-        SharedPreferences sharedPreferences = getSharedPreferences("LOGIN_STATUS", Context.MODE_PRIVATE);
-        boolean remember = sharedPreferences.getBoolean("remember", false);
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (remember == true) {
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-
-                } else {
-                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                }
-                Animatoo.animateZoom(SplashActivity.this);  //fire the zoom animation
-                finish();
+//                if (remember == true) {
+//
+//                } else {
+//                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+//                }
+//                Animatoo.animateZoom(SplashActivity.this);  //fire the zoom animation
+//                finish();
             }
         }, 3000);
     }

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,7 +63,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
         if (hoaDon == null) {
             return;
         }
-        holder.tv_foodname.setText("Your Food" + "\n" + hoaDon.getFoodname());
+        holder.tv_foodname.setText("Your Order" + "\n" + hoaDon.getFoodname());
         holder.tv_address.setText("Address : " + hoaDon.getAddress());
         holder.tv_price.setText(hoaDon.getPrice());
         holder.tv_date.setText("Date : " + hoaDon.getDate());
@@ -74,7 +75,6 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
            public void onClick(View view) {
                 holder.tvStatus.setText("Is Delivery");
                 holder.tvStatus.setTextColor(R.color.teal_200);
-               SharedPreferences sharedPreferences = context.getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
                Map<String, Object> noti = new HashMap<>();
                noti.put("NOTIFICATION", "Your order is confirmed \" + \"\\n\" +\"Please wait for Us");
                noti.put("PHONE",hoaDon.getPhone() );
@@ -95,8 +95,8 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
                        });
            }
        });
-    }
 
+    }
     @Override
     public int getItemCount() {
         return list.size();
@@ -105,6 +105,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_foodname, tv_date, tv_discount, tv_address, tv_price,tvStatus,tv_phonenumberr;
         Button btnRating;
+        CardView cvBillItem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -116,6 +117,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.ViewHolder> {
             tvStatus = itemView.findViewById(R.id.tvStatus);
             btnRating = itemView.findViewById(R.id.btnRating);
             tv_phonenumberr = itemView.findViewById(R.id.tv_phonenumberr);
+            cvBillItem = itemView.findViewById(R.id.cvBillItem);
         }
     }
 }

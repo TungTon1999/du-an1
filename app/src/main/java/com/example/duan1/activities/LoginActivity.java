@@ -3,7 +3,9 @@ package com.example.duan1.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +37,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        SharedPreferences sharedPreferences = getSharedPreferences("LOGIN_STATUS", Context.MODE_PRIVATE);
+        boolean remember = sharedPreferences.getBoolean("remember", false);
+        if (remember)
+        {                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+
+        }
         mp = MediaPlayer.create(LoginActivity.this, R.raw.nhac2);
         mp.setLooping(true);
         mp.setVolume(1000, 1000);
